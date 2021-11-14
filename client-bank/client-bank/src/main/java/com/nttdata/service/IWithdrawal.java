@@ -1,4 +1,4 @@
 package com.nttdata.service;
 
-public interface Withdrawal {
+public interface IWithdrawal {
 }
