@@ -1,10 +1,12 @@
 package com.nttdata.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@ToString
 public class Client {
     private Integer id;
     private String name;

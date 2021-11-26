@@ -1,12 +1,13 @@
 package com.nttdata.repository;
 
-public enum ClientType {
-    PERSON(1),
-    COMPANY(2);
+public enum CreditType {
+    PERSONAL(4),
+    BUSINESS(5),
+    CREDIT_CARD(6);
 
     private int value;
 
-    ClientType(int value) {
+    CreditType(int value) {
         this.value = value;
     }
 

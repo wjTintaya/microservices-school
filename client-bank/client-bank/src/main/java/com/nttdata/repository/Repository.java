@@ -4,20 +4,21 @@ import com.nttdata.model.Account;
 import com.nttdata.model.AccountMovement;
 import com.nttdata.model.Client;
 
+import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 public interface Repository {
-    void connection();
-    Stream<Client> getAllClients();
-    Stream<Account> getAllAccounts();
-    Stream<AccountMovement> getAllAccountMovements();
 
-    Optional<Client> geClientById(Integer id);
+    Optional<List<Client>> findAllClients();
 
-    Stream<Account> getAccountsByClient(Integer id);
-    Optional<Account> getAccountById(Integer id);
+    Optional<List<Account>> findAllAccounts();
 
-    Stream<AccountMovement> getAccountMovementsByAccount(Integer id);
-    Optional<AccountMovement> getAccountMovementById(Integer id);
+    Optional<List<AccountMovement>> findAllAccountMovements();
+
+    void insertAccountMovement(AccountMovement deposit);
+
+    Integer lastAccountMovementId();
+
+    Optional<Account> findAccountById(Integer idAccount);
+
 }

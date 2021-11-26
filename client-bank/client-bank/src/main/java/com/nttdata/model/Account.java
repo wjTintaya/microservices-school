@@ -1,14 +1,16 @@
 package com.nttdata.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@ToString
 public class Account {
     private Integer id;
     private String accountNumber;
-    private String description;
+    private Integer accountType;
     private Double maintenanceFee;
     private Integer monthlyMovement;  //monthlyTransaction
     private Double balance;

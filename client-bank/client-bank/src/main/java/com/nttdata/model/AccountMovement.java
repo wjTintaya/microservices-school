@@ -1,16 +1,18 @@
 package com.nttdata.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-@AllArgsConstructor
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@ToString
 public class AccountMovement {
     private Integer id;
     private int type;
     private Double amount;
-    private Date date;
+    private LocalDate date;
     private Integer accountId;
 }

@@ -9,14 +9,14 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SavingsAccount implements Deposit, Withdrawal {
+public class FixedTerm implements Deposit, Withdrawal{
 
-    private static final int monthlyMovementsLimit = 5;
-    private static final Double zeroMaintenance = 0.00;
+    private static final int monthlyMovementsLimit = 1;
+    private static final int dayOfTheMonth = 1;
 
     private Repository repository;
 
-    public SavingsAccount() {
+    public FixedTerm() {
         repository = new RepositoryImpl();
     }
 
@@ -73,19 +73,22 @@ public class SavingsAccount implements Deposit, Withdrawal {
     }
 
     private Boolean validMonthlyMovementsLimit(Integer idAccount) {
+        LocalDate getNow = LocalDate.now();
+        LocalDate movementDate = LocalDate.of(getNow.getYear(),getNow.getMonth(), dayOfTheMonth);
         Integer deposits =
                 getDepositsByAccountId(idAccount)
                         .stream()
-                        .filter(accountMovement -> accountMovement.getDate().getMonth().equals(LocalDate.now().getMonth()))
+                        .filter(accountMovement -> accountMovement.getDate().equals(movementDate))
                         .collect(Collectors.toList())
                         .size();
         Integer withdrawals =
                 getWithdrawalsByAccountId(idAccount)
                         .stream()
-                        .filter(accountMovement -> accountMovement.getDate().getMonth().equals(LocalDate.now().getMonth()))
+                        .filter(accountMovement -> accountMovement.getDate().equals(movementDate))
                         .collect(Collectors.toList())
                         .size();
-        if ((deposits + withdrawals) < monthlyMovementsLimit) return true;
+        if ((deposits + withdrawals) < monthlyMovementsLimit && getNow.equals(movementDate)) return true;
         else return false;
     }
+
 }

@@ -1,16 +1,18 @@
 package com.nttdata.repository;
 
-public enum ClientType {
-    PERSON(1),
-    COMPANY(2);
+public enum BankAccountType {
+    SAVINGS_ACCOUNT(1),
+    CURRENT_ACCOUNT(2),
+    FIXED_TERM(3);
 
     private int value;
 
-    ClientType(int value) {
+    BankAccountType(int value) {
         this.value = value;
     }
 
     public int getValue() {
         return value;
     }
+
 }
